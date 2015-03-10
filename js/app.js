@@ -41,8 +41,8 @@ var App = Backbone.Router.extend({
       this.nav.hideSpinner();
     });
 
-    this.listenTo(this.nav, "link:click", function(name){
-      switch(name) {
+    this.listenTo(this.nav, "link:click", function(data){
+      switch(data.name) {
         case "products":
           this.showProducts();
         break;
@@ -77,3 +77,4 @@ var App = Backbone.Router.extend({
   }
 
 });
+

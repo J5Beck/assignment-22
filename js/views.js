@@ -70,6 +70,7 @@ var NavView = Backbone.View.extend({
     $link = this.$(e.currentTarget);
     var name = $link.data("name");
     var href = $link.attr("href");
+    
     this.trigger("link:click", { 
       name: name,
       href: href
