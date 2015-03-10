@@ -1,7 +1,21 @@
-var App = (function(){
+var App = Backbone.Router.extend({
 
-  function App() {
-    _.extend(this, Backbone.Events);
+  routes: {
+    ""          : "showHome",
+    "products"  : "showProducts", 
+    "terms"     : "showTerms",
+  },
+
+  initialize: function() {
+
+    this.initialSetup();
+  },
+  initialSetup: function() {
+
+// var App = (function(){
+
+//   function App() {
+//     _.extend(this, Backbone.Events);
 
     // views
 
@@ -44,27 +58,22 @@ var App = (function(){
     // default to showing home
 
     this.showHome();
+  },
+
+
+  showProducts: function() {
+    this.$main.html( this.productsView.render().el );
+    if( !this.products.length ) {
+      this.products.fetch();
+    }
+  },
+
+  showHome: function() {
+    this.$main.html( this.homeView.render().el );
+  },
+
+  showTerms: function() {
+    this.$main.html( this.termsView.render().el );
   }
 
-  App.prototype = {
-
-    showProducts: function() {
-      this.$main.html( this.productsView.render().el );
-      if( !this.products.length ) {
-        this.products.fetch();
-      }
-    },
-
-    showHome: function() {
-      this.$main.html( this.homeView.render().el );
-    },
-
-    showTerms: function() {
-      this.$main.html( this.termsView.render().el );
-    }
-
-  };
-
-  return App;
-
-})();
+});
