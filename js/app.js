@@ -53,6 +53,7 @@ var App = Backbone.Router.extend({
           this.showHome();
         break;
       }
+      this.navigate(data.href);
     });
 
     // default to showing home
